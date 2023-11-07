@@ -1,0 +1,13 @@
+.sidebar-wrapper .sidebar-header img {
+    height: 1.8rem;
+}
+html[data-bs-theme=dark] .sidebar-wrapper .sidebar-header img {
+    height: 1.8rem;
+}
+
+.burger-btn {
+    color: #FF5154;
+}
+html[data-bs-theme=dark] .burger-btn {
+    color: #FF5154;
+}
