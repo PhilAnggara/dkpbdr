@@ -43,42 +43,42 @@
 
         <li class="sidebar-item active">
           <a href="{{ route('index') }}" class='sidebar-link'>
-            <i class="bi bi-grid-fill"></i>
+            <i class="fa fa-fw fa-objects-column"></i>
             <span>Beranda</span>
           </a>
         </li>
 
         <li class="sidebar-item">
           <a href="{{ route('index') }}" class='sidebar-link'>
-            <i class="bi bi-grid-fill"></i>
+            <i class="fa fa-fw fa-file-pen"></i>
             <span>Input Data</span>
           </a>
         </li>
 
         <li class="sidebar-item">
           <a href="{{ route('index') }}" class='sidebar-link'>
-            <i class="bi bi-grid-fill"></i>
+            <i class="fa fa-fw fa-money-check-dollar-pen"></i>
             <span>Data Peminjam</span>
           </a>
         </li>
 
         <li class="sidebar-item">
           <a href="{{ route('index') }}" class='sidebar-link'>
-            <i class="bi bi-grid-fill"></i>
+            <i class="fa fa-fw fa-chart-line-up"></i>
             <span>Capaian Sindikasi</span>
           </a>
         </li>
 
         <li class="sidebar-item">
           <a href="{{ route('index') }}" class='sidebar-link'>
-            <i class="bi bi-grid-fill"></i>
+            <i class="fa fa-fw fa-file-check"></i>
             <span>LKK</span>
           </a>
         </li>
 
         <li class="sidebar-item">
           <a href="{{ route('index') }}" class='sidebar-link'>
-            <i class="bi bi-grid-fill"></i>
+            <i class="fa fa-fw fa-calendar-exclamation"></i>
             <span>Jatuh Tagih / Tempo</span>
           </a>
         </li>

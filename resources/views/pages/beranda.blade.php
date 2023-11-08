@@ -6,7 +6,7 @@
   <div class="page-title mb-4">
     <div class="row">
       <div class="col-12 col-md-6 order-md-1 order-last">
-        <h3>Selamat Datang, {{ Str::before(auth()->user()->name, ' ') }}..!</h3>
+        <h3><span id="typed"></span></h3>
       </div>
     </div>
   </div>
@@ -56,9 +56,24 @@
 @push('prepend-style')
 @endpush
 @push('addon-style')
+  <script src="{{ url('assets/vendors/typed/typed.js') }}"></script>
 @endpush
 
 @push('prepend-script')
+<script>
+  var typed = new Typed('#typed', {
+    strings: [
+      'Selamat Datang, ' + `{!! Str::before(auth()->user()->name, ' ') !!}` + '..!',
+    ],
+    startDelay: 1000,
+    typeSpeed: 20,
+    showCursor: false,
+    // backSpeed: 15,
+    // backDelay: 3000,
+    // loop: true,
+    // loopCount: Infinity,
+  });
+</script>
 @endpush
 @push('addon-script')
 @endpush
