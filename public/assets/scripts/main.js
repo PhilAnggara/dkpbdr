@@ -4,8 +4,8 @@ function keluar() {
     text: "Tekan tombol Keluar di bawah ini untuk mengakhiri sesi anda!",
     icon: 'question',
     showCancelButton: true,
-    confirmButtonColor: '#00008C',
-    cancelButtonColor: '#FF5154',
+    confirmButtonColor: '#FF5154',
+    cancelButtonColor: '#ac9898',
     confirmButtonText: 'Keluar!',
     cancelButtonText: 'Batal'
   }).then((result) => {
