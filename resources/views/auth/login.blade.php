@@ -1,17 +1,22 @@
 @extends('layouts.auth')
 @section('title', 'Masuk')
+@section('subtitle', 'Masuk dengan data anda yang anda masukkan saat pendaftaran.')
 
 @section('content')
-<h1 class="auth-title">Masuk</h1>
-<p class="auth-subtitle mb-5">Masuk dengan data anda yang anda masukkan saat pendaftaran.</p>
 
 <form method="POST" action="{{ route('login') }}">
   @csrf
   <div class="form-group position-relative has-icon-left mb-4">
-    <input id="email" type="email" name="email" value="{{ old('email') }}" class="form-control form-control-xl" placeholder="Email" required autocomplete="off" autofocus>
+    <input id="email" type="email" name="email" value="{{ old('email') }}" class="form-control form-control-xl @error('email') is-invalid @enderror" placeholder="Email" required autocomplete="off" autofocus>
     <div class="form-control-icon">
       <i class="bi bi-envelope"></i>
     </div>
+    @error('email')
+      <div class="invalid-feedback">
+        <i class="bx bx-radio-circle"></i>
+        {{ $message }}
+      </div>
+    @enderror
   </div>
   <div class="form-group position-relative has-icon-left mb-4">
     <input id="password" type="password" name="password" class="form-control form-control-xl" placeholder="Kata Sandi" required>
@@ -31,6 +36,6 @@
   <p class="text-gray-600">
     Belum punya akun? <a href="{{ route('register') }}" class="font-bold">Buat akun</a>.
   </p>
-  <p>
 </div>
+
 @endsection

@@ -26,6 +26,8 @@
           <div class="auth-logo">
             <a href="{{ route('index') }}"><img src="{{ url('assets/images/logo.png') }}" alt="Logo"></a>
           </div>
+          <h1 class="auth-title">@yield('title')</h1>
+          <p class="auth-subtitle mb-5">@yield('subtitle')</p>
           @yield('content')
         </div>
       </div>

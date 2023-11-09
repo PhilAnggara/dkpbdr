@@ -41,43 +41,43 @@
       <ul class="menu">
         <li class="sidebar-title">Menu</li>
 
-        <li class="sidebar-item active">
+        <li class="sidebar-item {{ Request::is('/') ? 'active' : '' }}">
           <a href="{{ route('index') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-objects-column"></i>
             <span>Beranda</span>
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a href="{{ route('index') }}" class='sidebar-link'>
+        <li class="sidebar-item {{ Request::is('input-data') ? 'active' : '' }}">
+          <a href="{{ route('input-data') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-file-pen"></i>
             <span>Input Data</span>
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a href="{{ route('index') }}" class='sidebar-link'>
+        <li class="sidebar-item {{ Request::is('data-peminjam') ? 'active' : '' }}">
+          <a href="{{ route('data-peminjam') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-money-check-dollar-pen"></i>
             <span>Data Peminjam</span>
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a href="{{ route('index') }}" class='sidebar-link'>
+        <li class="sidebar-item {{ Request::is('capaian-sindkasi') ? 'active' : '' }}">
+          <a href="{{ route('capaian-sindkasi') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-chart-line-up"></i>
             <span>Capaian Sindikasi</span>
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a href="{{ route('index') }}" class='sidebar-link'>
+        <li class="sidebar-item {{ Request::is('lkk') ? 'active' : '' }}">
+          <a href="{{ route('lkk') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-file-check"></i>
             <span>LKK</span>
           </a>
         </li>
 
-        <li class="sidebar-item">
-          <a href="{{ route('index') }}" class='sidebar-link'>
+        <li class="sidebar-item {{ Request::is('jatuh-tagih-jatuh-tempo') ? 'active' : '' }}">
+          <a href="{{ route('jatuh-tagih-jatuh-tempo') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-calendar-exclamation"></i>
             <span>Jatuh Tagih / Tempo</span>
           </a>

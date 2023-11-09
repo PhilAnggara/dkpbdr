@@ -17,6 +17,11 @@ use App\Http\Controllers\ProfileController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('index');
+    Route::get('input-data', [MainController::class, 'inputData'])->name('input-data');
+    Route::get('data-peminjam', [MainController::class, 'peminjam'])->name('data-peminjam');
+    Route::get('capaian-sindkasi', [MainController::class, 'capaian'])->name('capaian-sindkasi');
+    Route::get('lkk', [MainController::class, 'lkk'])->name('lkk');
+    Route::get('jatuh-tagih-jatuh-tempo', [MainController::class, 'jatuh'])->name('jatuh-tagih-jatuh-tempo');
 });
 
 Route::get('/dashboard', function () {

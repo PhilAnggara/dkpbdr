@@ -18,6 +18,12 @@ a {
 a:hover {
     color: #e25255;
 }
+html[data-bs-theme="dark"] a {
+    color: #fc6466;
+}
+html[data-bs-theme="dark"] a:hover {
+    color: #e25255;
+}
 
 /* auth */
 #auth #auth-right {
@@ -27,7 +33,10 @@ a:hover {
     background-size: contain;
 }
 html[data-bs-theme="dark"] #auth #auth-right {
-    background: url(../images/logoD.png), linear-gradient(90deg, #ffd3d3, #f8f3f3);
+    background: url(../images/logoD.png), linear-gradient(90deg, #2c2424, #554848);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #auth #auth-left {
