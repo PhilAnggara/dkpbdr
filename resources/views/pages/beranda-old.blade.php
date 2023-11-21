@@ -14,10 +14,15 @@
 
     <div class="card">
       <div class="card-header">
-        <h4>Capaian Sindikasi</h4>
+        <h4 class="card-title">Capaian Sindikasi (Pertanggal / Bulan)</h4>
       </div>
       <div class="card-body">
-        <div id="bar"></div>
+        <p>
+          Capaian Sindikasi Bulan November :
+        </p>
+        <p>
+          Rp.14.755.600.000 (6 Recurring, 3 Ban)
+        </p>
       </div>
     </div>
 
@@ -61,14 +66,12 @@
 @endpush
 
 @push('prepend-script')
-@endpush
-@push('addon-script')
 <script>
   var typed = new Typed('#typed', {
     strings: [
       'Selamat Datang, ' + `{!! Str::before(auth()->user()->name, ' ') !!}` + '..!',
     ],
-    startDelay: 500,
+    startDelay: 1000,
     typeSpeed: 20,
     showCursor: false,
     // backSpeed: 15,
@@ -77,6 +80,6 @@
     // loopCount: Infinity,
   });
 </script>
-<script src="{{ url('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ url('assets/scripts/beranda.js') }}"></script>
+@endpush
+@push('addon-script')
 @endpush

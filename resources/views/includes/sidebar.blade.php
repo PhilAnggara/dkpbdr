@@ -48,15 +48,8 @@
           </a>
         </li>
 
-        <li class="sidebar-item {{ Request::is('input-data') ? 'active' : '' }}">
-          <a href="{{ route('input-data') }}" class='sidebar-link'>
-            <i class="fa fa-fw fa-file-pen"></i>
-            <span>Input Data</span>
-          </a>
-        </li>
-
         <li class="sidebar-item {{ Request::is('data-peminjam') ? 'active' : '' }}">
-          <a href="{{ route('data-peminjam') }}" class='sidebar-link'>
+          <a href="{{ route('data-peminjam.index') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-money-check-dollar-pen"></i>
             <span>Data Peminjam</span>
           </a>
@@ -69,6 +62,13 @@
           </a>
         </li>
 
+        <li class="sidebar-item {{ Request::is('jatuh-tagih-jatuh-tempo') ? 'active' : '' }}">
+          <a href="{{ route('jatuh-tagih-jatuh-tempo') }}" class='sidebar-link'>
+            <i class="fa fa-fw fa-calendar-exclamation"></i>
+            <span>Jatuh Tagih / Tempo</span>
+          </a>
+        </li>
+
         <li class="sidebar-item {{ Request::is('lkk') ? 'active' : '' }}">
           <a href="{{ route('lkk') }}" class='sidebar-link'>
             <i class="fa fa-fw fa-file-check"></i>
@@ -76,10 +76,17 @@
           </a>
         </li>
 
-        <li class="sidebar-item {{ Request::is('jatuh-tagih-jatuh-tempo') ? 'active' : '' }}">
-          <a href="{{ route('jatuh-tagih-jatuh-tempo') }}" class='sidebar-link'>
-            <i class="fa fa-fw fa-calendar-exclamation"></i>
-            <span>Jatuh Tagih / Tempo</span>
+        <li class="sidebar-item {{ Request::is('lkd') ? 'active' : '' }}">
+          <a href="{{ route('lkd') }}" class='sidebar-link'>
+            <i class="fa fa-fw fa-file-spreadsheet"></i>
+            <span>LKD</span>
+          </a>
+        </li>
+
+        <li class="sidebar-item {{ Request::is('memo-dinas') ? 'active' : '' }}">
+          <a href="{{ route('memo-dinas') }}" class='sidebar-link'>
+            <i class="fa fa-fw fa-memo"></i>
+            <span>Memo Dinas</span>
           </a>
         </li>
 

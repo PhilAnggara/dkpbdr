@@ -13,26 +13,31 @@ class MainController extends Controller
 
     public function inputData()
     {
-        return view('pages.beranda');
-    }
-    
-    public function peminjam()
-    {
-        return view('pages.beranda');
+        return view('pages.input-data');
     }
     
     public function capaian()
     {
-        return view('pages.beranda');
-    }
-    
-    public function lkk()
-    {
-        return view('pages.beranda');
+        return view('pages.capaian');
     }
     
     public function jatuh()
     {
-        return view('pages.beranda');
+        return view('pages.jatuh');
+    }
+    
+    public function lkk()
+    {
+        return view('pages.lkk');
+    }
+    
+    public function lkd()
+    {
+        return view('pages.lkd');
+    }
+    
+    public function memoDinas()
+    {
+        return view('pages.memo-dinas');
     }
 }
