@@ -3,13 +3,13 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel1">Input Data Perusahaan/Instansi</h5>
+        <h5 class="modal-title" id="myModalLabel1">Data Nasabah Korporasi <span class="text-secondary">(Perusahaan/Lembaga/Yayasan/Instansi)</span></h5>
         <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
           <i data-feather="x"></i>
         </button>
       </div>
       
-      <form action="{{ route('data-peminjam.store') }}" method="POST">
+      <form action="{{ route('data-peminjam.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="type" value="korporasi">
         <div class="modal-body">

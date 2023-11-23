@@ -23,11 +23,11 @@
           <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#perusahaan">
               <i class="fad fa-fw fa-buildings text-secondary"></i>
-              Input Data Perusahaan/Instansi
+              Input Data Nasabah Korporasi
             </a>
             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#perorangan">
               <i class="fa fa-fw fa-user text-secondary"></i>
-              Input Data Perorangan
+              Input Data Nasabah Perorangan
             </a>
           </div>
         </div>
@@ -129,7 +129,7 @@
 
   </section>
 </div>
-@include('includes.modals.modal-debitur-perusahaan')
+@include('includes.modals.modal-debitur-korporasi')
 @include('includes.modals.modal-debitur-perorangan')
 @endsection
 

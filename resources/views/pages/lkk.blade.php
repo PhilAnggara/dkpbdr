@@ -12,7 +12,7 @@
       <div class="col-12 col-md-6">
         <button class="btn icon icon-left btn-primary float-start float-lg-end" data-bs-toggle="modal" data-bs-target="#tambah">
           <i class="fa fa-fw fa-arrow-up-from-bracket"></i>
-          Upload LKK
+          Unggah LKK
         </button>
       </div>
     </div>
