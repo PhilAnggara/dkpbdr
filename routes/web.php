@@ -25,6 +25,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('lkk', [MainController::class, 'lkk'])->name('lkk');
     Route::get('lkd', [MainController::class, 'lkd'])->name('lkd');
     Route::get('memo-dinas', [MainController::class, 'memoDinas'])->name('memo-dinas');
+    Route::post('upload-dokumen', [MainController::class, 'uploadDokumen'])->name('upload-dokumen');
+    Route::delete('hapus-dokumen/{id}', [MainController::class, 'hapusDokumen'])->name('hapus-dokumen');
 });
 
 Route::get('/dashboard', function () {

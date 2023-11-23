@@ -9,9 +9,6 @@ use App\Http\Requests\DebiturRequest;
 
 class DebiturController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $fintech = Fintech::all();
@@ -19,54 +16,40 @@ class DebiturController extends Controller
         return view('pages.debitur', compact('items', 'fintech'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(DebiturRequest $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $item = Debitur::create($request->all());
 
         return redirect()->back()->with('success', $request->nama.' berhasil ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(DebiturRequest $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $item = Debitur::find($id);
+        $title = $item->nama;
+        $item->delete();
+
+        return redirect()->back()->with('success', $title.' dihapus!');
     }
 }

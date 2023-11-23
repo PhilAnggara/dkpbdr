@@ -11,7 +11,7 @@
       
       <form action="{{ route('data-peminjam.store') }}" method="POST">
         @csrf
-        <input type="hidden" name="type" value="peruusahaan">
+        <input type="hidden" name="type" value="korporasi">
         <div class="modal-body">
 
           <div class="divider my-3">
@@ -140,7 +140,13 @@
           
           <div class="form-group">
             <label for="npwp">Upload NPWP</label>
-            <input type="file" class="basic-filepond" id="npwp" name="npwp" value="{{ old('npwp') }}" required>
+            <input type="file" class="basic-filepond @error('npwp') is-invalid @enderror" id="npwp" name="npwp" value="{{ old('npwp') }}" requiredssssss>
+            @error('npwp')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
           </div>
 
           <fieldset class="form-group">
@@ -226,6 +232,90 @@
           <div class="divider my-3">
             <div class="divider-text fw-bold">Legalitas</div>
           </div>
+          
+          <div class="form-group">
+            <label>Akta Pendirian dan Pengesahan DEPKUMHAM</label>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <input type="file" class="basic-filepond @error('akta_pendirian') is-invalid @enderror" id="akta_pendirian" name="akta_pendirian" value="{{ old('akta_pendirian') }}" requiredssssss>
+                @error('akta_pendirian')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+              <div class="col-md-6 col-12">
+                <input type="file" class="basic-filepond @error('akta_pengesahan') is-invalid @enderror" id="akta_pengesahan" name="akta_pengesahan" value="{{ old('akta_pengesahan') }}" requiredssssss>
+                @error('akta_pengesahan')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Akta Perubahan Terakhir dan Pengesahan DEPKUMHAM</label>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <input type="file" class="basic-filepond @error('akta_perubahan_terakhir') is-invalid @enderror" id="akta_perubahan_terakhir" name="akta_perubahan_terakhir" value="{{ old('akta_perubahan_terakhir') }}" requiredssssss>
+                @error('akta_perubahan_terakhir')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+              <div class="col-md-6 col-12">
+                <input type="file" class="basic-filepond @error('akta_pengesahan2') is-invalid @enderror" id="akta_pengesahan2" name="akta_pengesahan2" value="{{ old('akta_pengesahan2') }}" requiredssssss>
+                @error('akta_pengesahan2')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="siup">SIUP</label>
+            <input type="file" class="basic-filepond @error('siup') is-invalid @enderror" id="siup" name="siup" value="{{ old('siup') }}" requiredssssss>
+            @error('siup')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+          
+          <div class="form-group">
+            <label for="nib">NIB (Nomor Induk Berusaha)</label>
+            <input type="file" class="basic-filepond @error('nib') is-invalid @enderror" id="nib" name="nib" value="{{ old('nib') }}" requiredssssss>
+            @error('nib')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <div class="divider my-3">
+            <div class="divider-text fw-bold">Data Pengurus</div>
+          </div>
+
+          @include('includes.form.pengurus', ['id_nama' => 'nama_1', 'id_jabatan' => 'jabatan_1', 'id_ktp' => 'ktp_1', 'id_npwp' => 'npwp_1'])
+          <hr>
+          @include('includes.form.pengurus', ['id_nama' => 'nama_2', 'id_jabatan' => 'jabatan_2', 'id_ktp' => 'ktp_2', 'id_npwp' => 'npwp_2'])
+          <hr>
+          @include('includes.form.pengurus', ['id_nama' => 'nama_3', 'id_jabatan' => 'jabatan_3', 'id_ktp' => 'ktp_3', 'id_npwp' => 'npwp_3'])
+          <hr>
+          @include('includes.form.pengurus', ['id_nama' => 'nama_4', 'id_jabatan' => 'jabatan_4', 'id_ktp' => 'ktp_4', 'id_npwp' => 'npwp_4'])
+          <hr>
+          @include('includes.form.pengurus', ['id_nama' => 'nama_5', 'id_jabatan' => 'jabatan_5', 'id_ktp' => 'ktp_5', 'id_npwp' => 'npwp_5'])
 
         </div>
         <div class="modal-footer">

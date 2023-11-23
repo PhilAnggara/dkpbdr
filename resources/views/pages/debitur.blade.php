@@ -45,7 +45,8 @@
               <th class="text-center">Fintech</th>
               <th class="text-center">Group</th>
               <th class="text-center">Tanggal Cair</th>
-              <th></th>
+              <th class="text-center">Kategori</th>
+              <th class="text-center"></th>
             </tr>
           </thead>
           <tbody>
@@ -90,6 +91,19 @@
                   {{ $carbon::parse($item->tanggal_cair)->isoFormat('D MMMM YYYY') }}
                 </td>
                 <td>
+                  @if ($item->type == 'korporasi')
+                    <span class="badge bg-light-primary">
+                      <i class="fad fa-fw fa-sm fa-buildings"></i>
+                      Korporasi
+                    </span>
+                  @else
+                    <span class="badge bg-light-primary">
+                      <i class="fad fa-fw fa-sm fa-user"></i>
+                      Perorangan
+                    </span>
+                  @endif
+                </td>
+                <td>
                   <div class="btn-group btn-group-sm" role="group">
                     <button type="button" class="btn icon">
                       <i class="text-primary fal fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"></i>
@@ -97,9 +111,13 @@
                     <button type="button" class="btn icon">
                       <i class="text-primary fal fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i>
                     </button>
-                    <button type="button" class="btn icon">
+                    <button type="button" class="btn icon" onclick="hapusData({{ $item->id }}, 'Hapus Debitur', 'Yakin ingin menghapus {{ $item->nama }}?')">
                       <i class="text-secondary fal fa-trash-alt" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"></i>
                     </button>
+                    <form action="{{ route('data-peminjam.destroy', $item->id) }}" id="hapus-{{ $item->id }}" method="POST">
+                      @method('delete')
+                      @csrf
+                    </form>
                   </div>
                 </td>
               </tr>
@@ -142,5 +160,5 @@
 <script src="{{ url('assets/extensions/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js') }}"></script>
 <script src="{{ url('assets/extensions/filepond/filepond.js') }}"></script>
 <script src="{{ url('assets/extensions/toastify-js/src/toastify.js') }}"></script>
-<script src="{{ url('assets/static/js/pages/filepond.js') }}"></script>
+<script src="{{ url('assets/scripts/filepond.js') }}"></script>
 @endpush
