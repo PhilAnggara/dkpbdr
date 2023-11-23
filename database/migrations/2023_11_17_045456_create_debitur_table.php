@@ -14,14 +14,19 @@ return new class extends Migration
         Schema::create('debitur', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_fintech');
+            $table->foreignId('id_kelurahan');
+            $table->string('type');
             $table->string('nama');
-            $table->string('grup');
+            $table->string('grup')->nullable();
             $table->integer('plafond_all');
             $table->integer('plafond_bdr');
             $table->date('tanggal_cair');
             $table->integer('jangka_waktu');
             $table->string('sistem_pembayaran');
-            $table->string('type');
+            $table->string('alamat');
+            $table->string('no_telp');
+            $table->string('no_hp');
+            $table->string('email');
             $table->timestamps();
             $table->softDeletes();
         });

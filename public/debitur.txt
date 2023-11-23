@@ -1,0 +1,13 @@
+id_fintech
+grup
+plafond_all
+plafond_bdr
+tanggal_cair
+jangka_waktu
+sistem_pembayaran
+nama
+alamat
+id_kelurahan
+no_telp
+no_hp
+email

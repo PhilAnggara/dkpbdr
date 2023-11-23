@@ -119,6 +119,10 @@
 @push('prepend-style')
 <link rel="stylesheet" href="{{ url('assets/extensions/simple-datatables/style.css') }}">
 <link rel="stylesheet" href="{{ url('assets/compiled/css/table-datatable.css') }}">
+
+<link rel="stylesheet" href="{{ url('assets/extensions/filepond/filepond.css') }}">
+<link rel="stylesheet" href="{{ url('assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css') }}">
+<link rel="stylesheet" href="{{ url('assets/extensions/toastify-js/src/toastify.css') }}">
 @endpush
 @push('addon-style')
 @endpush
@@ -128,4 +132,15 @@
 @push('addon-script')
 <script src="{{ url('assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
 <script src="{{ url('assets/scripts/simple-datatables.js') }}"></script>
+
+<script src="{{ url('assets/extensions/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js') }}"></script>
+<script src="{{ url('assets/extensions/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js') }}"></script>
+<script src="{{ url('assets/extensions/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js') }}"></script>
+<script src="{{ url('assets/extensions/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}"></script>
+<script src="{{ url('assets/extensions/filepond-plugin-image-filter/filepond-plugin-image-filter.min.js') }}"></script>
+<script src="{{ url('assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}"></script>
+<script src="{{ url('assets/extensions/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js') }}"></script>
+<script src="{{ url('assets/extensions/filepond/filepond.js') }}"></script>
+<script src="{{ url('assets/extensions/toastify-js/src/toastify.js') }}"></script>
+<script src="{{ url('assets/static/js/pages/filepond.js') }}"></script>
 @endpush

@@ -32,6 +32,7 @@ class DebiturController extends Controller
      */
     public function store(DebiturRequest $request)
     {
+        dd($request->all());
         $item = Debitur::create($request->all());
 
         return redirect()->back()->with('success', $request->nama.' berhasil ditambahkan!');
