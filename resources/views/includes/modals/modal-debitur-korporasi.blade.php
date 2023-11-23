@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel1">Data Nasabah Korporasi <span class="text-secondary">(Perusahaan/Lembaga/Yayasan/Instansi)</span></h5>
+        <h5 class="modal-title" id="myModalLabel1">Data Nasabah Korporasi <small class="text-muted">(Perusahaan/Lembaga/Yayasan/Instansi)</small></h5>
         <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
           <i data-feather="x"></i>
         </button>

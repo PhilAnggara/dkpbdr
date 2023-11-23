@@ -17,7 +17,7 @@
           @if ($type != 'memo dinas')
             <fieldset class="form-group">
               <label for="id_debitur">Debitur</label>
-              <select class="form-select" id="id_debitur" name="id_debitur" required>
+              <select class="choices form-select" id="id_debitur" name="id_debitur" required>
                 <option value="" selected disabled>-- Pilih Debitur --</option>
                 @foreach ($debitur as $d)
                   <option value="{{ $d->id }}" {{ old('id_debitur') == $d->id ? 'selected' : '' }}>{{ $d->nama }}</option>

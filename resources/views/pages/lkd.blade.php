@@ -74,6 +74,8 @@
 
 
 @push('prepend-style')
+<link rel="stylesheet" href="{{ url('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
+
 <link rel="stylesheet" href="{{ url('assets/extensions/simple-datatables/style.css') }}">
 <link rel="stylesheet" href="{{ url('assets/compiled/css/table-datatable.css') }}">
 
@@ -100,4 +102,7 @@
 <script src="{{ url('assets/extensions/filepond/filepond.js') }}"></script>
 <script src="{{ url('assets/extensions/toastify-js/src/toastify.js') }}"></script>
 <script src="{{ url('assets/scripts/filepond-dokumen.js') }}"></script>
+
+<script src="{{ url('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
+<script src="{{ url('assets/static/js/pages/form-element-select.js') }}"></script>
 @endpush

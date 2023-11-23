@@ -84,7 +84,11 @@
             @foreach ($items as $item)
               <tr>
                 <td>{{ $item->nama }}</td>
-                <td>{{ $item->fin->fintech }}</td>
+                <td>
+                  <span class="badge bg-light-success">
+                    {{ $item->fin->fintech }}
+                  </span>
+                </td>
                 <td>{{ $item->grup }}</td>
                 <td>
                   <i class="fal fa-calendar-day text-danger"></i>

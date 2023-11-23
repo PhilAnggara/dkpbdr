@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Debitur;
 use App\Models\Dokumen;
+use App\Models\Pembayaran;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function index()
     {
-        return view('pages.beranda');
+        $pembayaran = Pembayaran::whereMonth('tanggal', Carbon::now()->month)->get()->sortByDesc('tanggal');
+        return view('pages.beranda', [
+            'pembayaran' => $pembayaran
+        ]);
     }
 
     public function inputData()
@@ -25,7 +30,10 @@ class MainController extends Controller
     
     public function jatuh()
     {
-        return view('pages.jatuh');
+        $items = Pembayaran::all()->sortByDesc('tanggal');
+        return view('pages.jatuh', [
+            'items' => $items
+        ]);
     }
     
     public function lkk()

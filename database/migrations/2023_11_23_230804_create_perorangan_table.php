@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('agama');
             $table->string('status_perkawinan');
             $table->string('no_ktp');
-            $table->text('ktp');
+            $table->text('ktp')->nullable();
             $table->string('no_npwp');
-            $table->text('npwp');
+            $table->text('npwp')->nullable();
             $table->string('nama_ibu');
             $table->string('pekerjaan');
             $table->string('nama_perusahaan');

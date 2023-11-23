@@ -25,4 +25,24 @@ class Debitur extends Model
     {
         return $this->belongsTo(Fintech::class, 'id_fintech', 'id');
     }
+
+    public function korporasi()
+    {
+        return $this->hasOne(Korporasi::class, 'id_debitur', 'id');
+    }
+
+    public function perorangan()
+    {
+        return $this->hasOne(Perorangan::class, 'id_debitur', 'id');
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class, 'id_debitur', 'id');
+    }
+
+    public function dokumen()
+    {
+        return $this->hasMany(Dokumen::class, 'id_debitur', 'id');
+    }
 }

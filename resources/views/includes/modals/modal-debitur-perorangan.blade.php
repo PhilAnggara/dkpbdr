@@ -143,7 +143,11 @@
             <select class="form-select" id="agama" name="agama" required>
               <option value="" selected disabled>-- Pilih Agama --</option>
               <option {{ old('agama') == 'Islam' ? 'selected' : '' }}>Islam</option>
-              <option {{ old('agama') == 'Kristen' ? 'selected' : '' }}>Kristen</option>
+              <option {{ old('agama') == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
+              <option {{ old('agama') == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+              <option {{ old('agama') == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+              <option {{ old('agama') == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+              <option {{ old('agama') == 'Khonghucu' ? 'selected' : '' }}>Khonghucu</option>
               <option {{ old('agama') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
             </select>
           </fieldset>

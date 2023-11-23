@@ -20,4 +20,9 @@ class Perorangan extends Model
     protected $hidden = [
 
     ];
+
+    public function debitur()
+    {
+        return $this->belongsTo(Debitur::class, 'id_debitur', 'id');
+    }
 }
