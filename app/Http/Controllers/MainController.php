@@ -30,21 +30,21 @@ class MainController extends Controller
     
     public function lkk()
     {
-        $items = Dokumen::where('type', 'lkk')->get();
-        $debitur = Debitur::all();
+        $items = Dokumen::where('type', 'lkk')->get()->sortDesc();
+        $debitur = Debitur::all()->sortDesc();
         return view('pages.lkk', compact('items', 'debitur'));
     }
     
     public function lkd()
     {
-        $items = Dokumen::where('type', 'lkd')->get();
-        $debitur = Debitur::all();
+        $items = Dokumen::where('type', 'lkd')->get()->sortDesc();
+        $debitur = Debitur::all()->sortDesc();
         return view('pages.lkd', compact('items', 'debitur'));
     }
     
     public function memoDinas()
     {
-        $items = Dokumen::where('type', 'memo dinas')->get();
+        $items = Dokumen::where('type', 'memo dinas')->get()->sortDesc();
         return view('pages.memo-dinas', compact('items'));
     }
 
@@ -63,7 +63,7 @@ class MainController extends Controller
             ]);
         }
         
-        $data['path'] = $request->file('path')->storeAs('files/dokumen/'.$request->type, $request->no.'.pdf' , 'public');
+        $data['path'] = $request->file('path')->storeAs('dokumen/'.$request->type, $request->no.'.pdf' , 'public');
 
         Dokumen::create($data);
         return redirect()->back()->with('success', 'Dokumen berhasil diunggah!');

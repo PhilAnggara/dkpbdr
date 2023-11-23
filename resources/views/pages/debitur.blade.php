@@ -21,7 +21,7 @@
             Input Data
           </button>
           <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#perusahaan">
+            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#korporasi">
               <i class="fad fa-fw fa-buildings text-secondary"></i>
               Input Data Nasabah Korporasi
             </a>
@@ -97,7 +97,7 @@
                       Korporasi
                     </span>
                   @else
-                    <span class="badge bg-light-primary">
+                    <span class="badge bg-light-secondary">
                       <i class="fad fa-fw fa-sm fa-user"></i>
                       Perorangan
                     </span>
