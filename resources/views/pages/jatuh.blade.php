@@ -35,10 +35,10 @@
                     {{ $item->debitur->fin->fintech }}
                   </span>
                 </td>
-                <td>{{ $item->debitur->plafond_bdr }}</td>
+                <td>{{ uang($item->debitur->plafond_bdr) }}</td>
                 <td>
                   <i class="fal fa-calendar-day text-danger"></i>
-                  {{ $carbon::parse($item->tanggal)->isoFormat('D MMMM YYYY') }}
+                  {{ tgl($item->tanggal) }}
                 </td>
                 <td>
                   @if ($item->type == 'jatuh tagih')

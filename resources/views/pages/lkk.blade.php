@@ -48,8 +48,8 @@
                   </a>
                 </td>
                 <td>
-                  <i class="fal fa-calendar-day text-danger"></i>
-                  {{ $carbon::parse($item->created_at)->isoFormat('D MMMM YYYY') }}
+                  <i class="fal fa-fw fa-calendar-day text-danger"></i>
+                  {{ tgl($item->created_at) }}
                 </td>
                 <td>
                   <button type="button" class="btn btn-sm icon icon-left" onclick="hapusData({{ $item->id }}, 'Hapus Dokumen', 'Yakin ingin menghapus dokumen ini?')">

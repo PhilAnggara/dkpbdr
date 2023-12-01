@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Data Peminjam')
 @inject('carbon', 'Carbon\Carbon')
+@inject('myFunc', 'App\Helpers\MyFunction')
 
 @section('content')
 <div class="page-heading">
@@ -91,8 +92,8 @@
                 </td>
                 <td>{{ $item->grup }}</td>
                 <td>
-                  <i class="fal fa-calendar-day text-danger"></i>
-                  {{ $carbon::parse($item->tanggal_cair)->isoFormat('D MMMM YYYY') }}
+                  <i class="fal fa-fw fa-calendar-day text-danger"></i>
+                  {{ tgl($item->tanggal_cair) }}
                 </td>
                 <td>
                   @if ($item->type == 'korporasi')
@@ -109,10 +110,10 @@
                 </td>
                 <td>
                   <div class="btn-group btn-group-sm" role="group">
-                    <button type="button" class="btn icon">
+                    <button type="button" class="btn icon" data-bs-toggle="modal" data-bs-target="#detail-{{ $item->id }}">
                       <i class="text-primary fal fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"></i>
                     </button>
-                    <button type="button" class="btn icon">
+                    <button type="button" class="btn icon" data-bs-toggle="modal" data-bs-target="#edit{{ $item->type == 'korporasi' ? 'Korporasi' : 'Perorangan' }}-{{ $item->id }}">
                       <i class="text-primary fal fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i>
                     </button>
                     <button type="button" class="btn icon" onclick="hapusData({{ $item->id }}, 'Hapus Debitur', 'Yakin ingin menghapus {{ $item->nama }}?')">

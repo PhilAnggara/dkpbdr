@@ -25,6 +25,15 @@ html[data-bs-theme="dark"] a:hover {
     color: #e25255;
 }
 
+.h-card {
+	box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.15);
+	// transition : box-shadow .2s !important;
+	&:hover {
+		background-color: #d6e6fd;
+		box-shadow: 0 .125rem .70rem rgba(0, 0, 0, 0.25);
+	}
+}
+
 /* auth */
 #auth #auth-right {
     background: url(../images/logoD.png), linear-gradient(90deg, #ffd3d3, #f8f3f3);

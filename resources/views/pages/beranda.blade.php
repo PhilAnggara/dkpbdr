@@ -47,10 +47,10 @@
                       {{ $p->debitur->fin->fintech }}
                     </span>
                   </td>
-                  <td>{{ $p->debitur->plafond_bdr }}</td>
+                  <td>{{ uang($p->debitur->plafond_bdr) }}</td>
                   <td>
-                    <i class="fal fa-calendar-day text-danger"></i>
-                    {{ $carbon::parse($p->tanggal)->isoFormat('D MMMM YYYY') }}
+                    <i class="fal fa-fw fa-calendar-day text-danger"></i>
+                    {{ tgl($p->tanggal) }}
                   </td>
                   <td>
                     @if ($p->type == 'jatuh tagih')

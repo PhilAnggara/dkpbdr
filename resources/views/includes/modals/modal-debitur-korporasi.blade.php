@@ -140,7 +140,7 @@
           
           <div class="form-group">
             <label for="npwp">Upload NPWP</label>
-            <input type="file" class="basic-filepond @error('npwp') is-invalid @enderror" id="npwp" name="npwp" value="{{ old('npwp') }}" requiredssssss>
+            <input type="file" class="basic-filepond @error('npwp') is-invalid @enderror" id="npwp" name="npwp" value="{{ old('npwp') }}" required>
             @error('npwp')
               <div class="invalid-feedback">
                 <i class="bx bx-radio-circle"></i>
@@ -237,7 +237,7 @@
             <label>Akta Pendirian dan Pengesahan DEPKUMHAM</label>
             <div class="row">
               <div class="col-md-6 col-12">
-                <input type="file" class="basic-filepond @error('akta_pendirian') is-invalid @enderror" id="akta_pendirian" name="akta_pendirian" value="{{ old('akta_pendirian') }}" requiredssssss>
+                <input type="file" class="basic-filepond @error('akta_pendirian') is-invalid @enderror" id="akta_pendirian" name="akta_pendirian" value="{{ old('akta_pendirian') }}" required>
                 @error('akta_pendirian')
                   <div class="invalid-feedback">
                     <i class="bx bx-radio-circle"></i>
@@ -246,7 +246,7 @@
                 @enderror
               </div>
               <div class="col-md-6 col-12">
-                <input type="file" class="basic-filepond @error('akta_pengesahan') is-invalid @enderror" id="akta_pengesahan" name="akta_pengesahan" value="{{ old('akta_pengesahan') }}" requiredssssss>
+                <input type="file" class="basic-filepond @error('akta_pengesahan') is-invalid @enderror" id="akta_pengesahan" name="akta_pengesahan" value="{{ old('akta_pengesahan') }}" required>
                 @error('akta_pengesahan')
                   <div class="invalid-feedback">
                     <i class="bx bx-radio-circle"></i>
@@ -261,7 +261,7 @@
             <label>Akta Perubahan Terakhir dan Pengesahan DEPKUMHAM</label>
             <div class="row">
               <div class="col-md-6 col-12">
-                <input type="file" class="basic-filepond @error('akta_perubahan_terakhir') is-invalid @enderror" id="akta_perubahan_terakhir" name="akta_perubahan_terakhir" value="{{ old('akta_perubahan_terakhir') }}" requiredssssss>
+                <input type="file" class="basic-filepond @error('akta_perubahan_terakhir') is-invalid @enderror" id="akta_perubahan_terakhir" name="akta_perubahan_terakhir" value="{{ old('akta_perubahan_terakhir') }}" required>
                 @error('akta_perubahan_terakhir')
                   <div class="invalid-feedback">
                     <i class="bx bx-radio-circle"></i>
@@ -270,7 +270,7 @@
                 @enderror
               </div>
               <div class="col-md-6 col-12">
-                <input type="file" class="basic-filepond @error('akta_pengesahan2') is-invalid @enderror" id="akta_pengesahan2" name="akta_pengesahan2" value="{{ old('akta_pengesahan2') }}" requiredssssss>
+                <input type="file" class="basic-filepond @error('akta_pengesahan2') is-invalid @enderror" id="akta_pengesahan2" name="akta_pengesahan2" value="{{ old('akta_pengesahan2') }}" required>
                 @error('akta_pengesahan2')
                   <div class="invalid-feedback">
                     <i class="bx bx-radio-circle"></i>
@@ -283,7 +283,7 @@
           
           <div class="form-group">
             <label for="siup">SIUP</label>
-            <input type="file" class="basic-filepond @error('siup') is-invalid @enderror" id="siup" name="siup" value="{{ old('siup') }}" requiredssssss>
+            <input type="file" class="basic-filepond @error('siup') is-invalid @enderror" id="siup" name="siup" value="{{ old('siup') }}" required>
             @error('siup')
               <div class="invalid-feedback">
                 <i class="bx bx-radio-circle"></i>
@@ -294,7 +294,7 @@
           
           <div class="form-group">
             <label for="nib">NIB (Nomor Induk Berusaha)</label>
-            <input type="file" class="basic-filepond @error('nib') is-invalid @enderror" id="nib" name="nib" value="{{ old('nib') }}" requiredssssss>
+            <input type="file" class="basic-filepond @error('nib') is-invalid @enderror" id="nib" name="nib" value="{{ old('nib') }}" required>
             @error('nib')
               <div class="invalid-feedback">
                 <i class="bx bx-radio-circle"></i>
@@ -331,3 +331,184 @@
     </div>
   </div>
 </div>
+
+
+@foreach ($debKorporasi as $dk)
+
+
+<div class="modal fade text-left" id="detail-{{ $dk->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel1">
+          Detail Debitur
+          <span class="badge bg-light-primary">
+            <i class="fad fa-fw fa-sm fa-buildings"></i>
+            Korporasi
+          </span>
+        </h5>
+        <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="divider my-3">
+          <div class="divider-text fw-bold">Data Nasabah</div>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th>Fintech</th>
+                <td>
+                  <span class="badge bg-light-success">
+                    {{ $item->fin->fintech }}
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <th>Nama Perusahaan</th>
+                <td>{{ $dk->nama }}</td>
+              </tr>
+              <tr>
+                <th>Group</th>
+                <td>{{ $dk->grup }}</td>
+              </tr>
+              <tr>
+                <th>Plafond All</th>
+                <td>{{ uang($dk->plafond_all) }}</td>
+              </tr>
+              <tr>
+                <th>Plafond BDR</th>
+                <td>{{ uang($dk->plafond_bdr) }}</td>
+              </tr>
+              <tr>
+                <th>Tanggal Cair</th>
+                <td>
+                  <i class="fal fa-fw fa-calendar-day text-danger"></i>
+                  {{ tgl($dk->tanggal_cair) }}
+                </td>
+              </tr>
+              <tr>
+                <th>Jangka Waktu</th>
+                <td>{{ $dk->jangka_waktu }} <small class="text-secondary fst-italic">Bulan</small></td>
+              </tr>
+              <tr>
+                <th>Sistem Pembayaran</th>
+                <td>{{ $dk->sistem_pembayaran }}</td>
+              </tr>
+              <tr>
+                <th>Status Badan Hukum</th>
+                <td>{{ $dk->korporasi->status_bh }}</td>
+              </tr>
+              <tr>
+                <th>NPWP</th>
+                <td>
+                  <a href="{{ Storage::url($dk->korporasi->npwp) }}" target="_blank" class="badge bg-light-primary">
+                    <i class="fal fa-print"></i>
+                    {{ $dk->korporasi->no_npwp }}
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <th>Bidang Usaha</th>
+                <td>{{ $dk->korporasi->bidang_usaha }}</td>
+              </tr>
+              <tr>
+                <th>Alamat</th>
+                <td>
+                  <i class="fad fa-fw fa-location-dot text-danger"></i>
+                  {{ alamat($dk->id_kelurahan) }}
+                </td>
+              </tr>
+              <tr>
+                <th>Detail Alamat</th>
+                <td>{{ $dk->alamat }}</td>
+              </tr>
+              <tr>
+                <th>Nomor Telepon</th>
+                <td>
+                  <i class="fal fa-fw fa-phone"></i>
+                  {{ $dk->no_telp }}
+                </td>
+              </tr>
+              <tr>
+                <th>Nomor Handphone</th>
+                <td>
+                  <i class="fal fa-fw fa-mobile"></i>
+                  {{ $dk->no_hp }}
+                </td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>
+                  <i class="fal fa-fw fa-envelope"></i>
+                  {{ $dk->email }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="divider my-3">
+          <div class="divider-text fw-bold">Legalitas</div>
+        </div>
+
+        <div class="container">
+          <p class="fw-bold">Akta Pendirian dan Pengesahan DEPKUMHAM</p>
+          <div class="row">
+            <div class="col-md-6 col-12">
+              @include('includes.component.file-card', ['file_path' => $dk->korporasi->akta_pendirian])
+            </div>
+            <div class="col-md-6 col-12">
+              @include('includes.component.file-card', ['file_path' => $dk->korporasi->akta_pengesahan])
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <p class="fw-bold">Akta Perubahan Terakhir dan Pengesahan DEPKUMHAM</p>
+          <div class="row">
+            <div class="col-md-6 col-12">
+              @include('includes.component.file-card', ['file_path' => $dk->korporasi->akta_perubahan_terakhir])
+            </div>
+            <div class="col-md-6 col-12">
+              @include('includes.component.file-card', ['file_path' => $dk->korporasi->akta_pengesahan2])
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <p class="fw-bold">SIUP</p>
+          @include('includes.component.file-card', ['file_path' => $dk->korporasi->siup])
+        </div>
+
+        <div class="container">
+          <p class="fw-bold">NIB (Nomor Induk Berusaha)</p>
+          @include('includes.component.file-card', ['file_path' => $dk->korporasi->nib])
+        </div>
+
+        <div class="divider my-3">
+          <div class="divider-text fw-bold">Data Pengurus</div>
+        </div>
+        
+        @include('includes.component.pengurus', ['nama' => $dk->korporasi->nama_1, 'jabatan' => $dk->korporasi->jabatan_1, 'ktp' => $dk->korporasi->ktp_1, 'npwp' => $dk->korporasi->npwp_1])
+        <hr>
+        @include('includes.component.pengurus', ['nama' => $dk->korporasi->nama_2, 'jabatan' => $dk->korporasi->jabatan_2, 'ktp' => $dk->korporasi->ktp_2, 'npwp' => $dk->korporasi->npwp_2])
+        <hr>
+        @include('includes.component.pengurus', ['nama' => $dk->korporasi->nama_3, 'jabatan' => $dk->korporasi->jabatan_3, 'ktp' => $dk->korporasi->ktp_3, 'npwp' => $dk->korporasi->npwp_3])
+        <hr>
+        @include('includes.component.pengurus', ['nama' => $dk->korporasi->nama_4, 'jabatan' => $dk->korporasi->jabatan_4, 'ktp' => $dk->korporasi->ktp_4, 'npwp' => $dk->korporasi->npwp_4])
+        <hr>
+        @include('includes.component.pengurus', ['nama' => $dk->korporasi->nama_5, 'jabatan' => $dk->korporasi->jabatan_5, 'ktp' => $dk->korporasi->ktp_5, 'npwp' => $dk->korporasi->npwp_5])
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@endforeach

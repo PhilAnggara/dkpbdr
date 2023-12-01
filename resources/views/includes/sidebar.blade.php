@@ -56,7 +56,7 @@
         </li>
 
         <li class="sidebar-item {{ Request::is('capaian-sindkasi') ? 'active' : '' }}">
-          <a href="{{ route('capaian-sindkasi') }}" class='sidebar-link'>
+          <a href="#" class='sidebar-link'>
             <i class="fa fa-fw fa-chart-line-up"></i>
             <span>Capaian Sindikasi</span>
           </a>

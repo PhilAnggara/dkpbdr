@@ -178,7 +178,7 @@
               
               <div class="form-group">
                 <label for="b_ktp">Upload KTP</label>
-                <input type="file" class="basic-filepond @error('ktp') is-invalid @enderror" id="b_ktp" name="ktp" value="{{ old('ktp') }}" requiredssssss>
+                <input type="file" class="basic-filepond @error('ktp') is-invalid @enderror" id="b_ktp" name="ktp" value="{{ old('ktp') }}" required>
                 @error('ktp')
                   <div class="invalid-feedback">
                     <i class="bx bx-radio-circle"></i>
@@ -203,7 +203,7 @@
               
               <div class="form-group">
                 <label for="b_npwp">Upload NPWP</label>
-                <input type="file" class="basic-filepond @error('npwp') is-invalid @enderror" id="b_npwp" name="npwp" value="{{ old('npwp') }}" requiredssssss>
+                <input type="file" class="basic-filepond @error('npwp') is-invalid @enderror" id="b_npwp" name="npwp" value="{{ old('npwp') }}" required>
                 @error('npwp')
                   <div class="invalid-feedback">
                     <i class="bx bx-radio-circle"></i>
@@ -387,3 +387,198 @@
     </div>
   </div>
 </div>
+
+
+@foreach ($debPerorangan as $dp)
+
+
+<div class="modal fade text-left" id="detail-{{ $dp->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel1">
+          Detail Debitur
+          <span class="badge bg-light-secondary">
+            <i class="fad fa-fw fa-sm fa-user"></i>
+            Perorangan
+          </span>
+        </h5>
+        <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="divider my-3">
+          <div class="divider-text fw-bold">Data Nasabah</div>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th>Fintech</th>
+                <td>
+                  <span class="badge bg-light-success">
+                    {{ $dp->fin->fintech }}
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <th>Nama Lengkap</th>
+                <td>{{ $dp->nama }}</td>
+              </tr>
+              <tr>
+                <th>Group</th>
+                <td>{{ $dp->grup }}</td>
+              </tr>
+              <tr>
+                <th>Plafond All</th>
+                <td>{{ uang($dp->plafond_all) }}</td>
+              </tr>
+              <tr>
+                <th>Plafond BDR</th>
+                <td>{{ uang($dp->plafond_bdr) }}</td>
+              </tr>
+              <tr>
+                <th>Tanggal Cair</th>
+                <td>
+                  <i class="fal fa-fw fa-calendar-day text-danger"></i>
+                  {{ tgl($dp->tanggal_cair) }}
+                </td>
+              </tr>
+              <tr>
+                <th>Jangka Waktu</th>
+                <td>{{ $dp->jangka_waktu }} <small class="text-secondary fst-italic">Bulan</small></td>
+              </tr>
+              <tr>
+                <th>Sistem Pembayaran</th>
+                <td>{{ $dp->sistem_pembayaran }}</td>
+              </tr>
+              <tr>
+                <th>Tempat Tanggal Lahir</th>
+                <td>{{ $dp->perorangan->tempat_lahir }}, {{ tgl($dp->perorangan->tanggal_lahir) }}</td>
+              </tr>
+              <tr>
+                <th>Jenis Kelamin</th>
+                <td>
+                  <i class="fal fa-fw fa-{{ $dp->perorangan->jenis_kelamin === "Laki-laki" ? "mars text-primary" : "venus text-danger" }}"></i>
+                  {{ $dp->perorangan->jenis_kelamin }}
+                </td>
+              </tr>
+              <tr>
+                <th>Agama</th>
+                <td>{{ $dp->perorangan->agama }}</td>
+              </tr>
+              <tr>
+                <th>Status Perkawinan</th>
+                <td>{{ $dp->perorangan->status_perkawinan }}</td>
+              </tr>
+              <tr>
+                <th>KTP</th>
+                <td>
+                  <a href="{{ Storage::url($dp->perorangan->ktp) }}" target="_blank" class="badge bg-light-primary">
+                    <i class="fal fa-print"></i>
+                    {{ $dp->perorangan->no_ktp }}
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <th>NPWP</th>
+                <td>
+                  <a href="{{ Storage::url($dp->perorangan->npwp) }}" target="_blank" class="badge bg-light-primary">
+                    <i class="fal fa-print"></i>
+                    {{ $dp->perorangan->no_npwp }}
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <th>Nama Gadis Ibu Kandung</th>
+                <td>{{ $dp->perorangan->nama_ibu }}</td>
+              </tr>
+              <tr>
+                <th>Alamat</th>
+                <td>
+                  <i class="fad fa-fw fa-location-dot text-danger"></i>
+                  {{ alamat($dp->id_kelurahan) }}
+                </td>
+              </tr>
+              <tr>
+                <th>Detail Alamat</th>
+                <td>{{ $dp->alamat }}</td>
+              </tr>
+              <tr>
+                <th>Nomor Telepon</th>
+                <td>
+                  <i class="fal fa-fw fa-phone"></i>
+                  {{ $dp->no_telp }}
+                </td>
+              </tr>
+              <tr>
+                <th>Nomor Handphone</th>
+                <td>
+                  <i class="fal fa-fw fa-mobile"></i>
+                  {{ $dp->no_hp }}
+                </td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>
+                  <i class="fal fa-fw fa-envelope"></i>
+                  {{ $dp->email }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="divider my-3">
+          <div class="divider-text fw-bold">Data Pekerjaan</div>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th>Jenis Pekerjaan</th>
+                <td>{{ $dp->perorangan->pekerjaan }}</td>
+              </tr>
+              <tr>
+                <th>Nama Perusahaan / Instansi</th>
+                <td>{{ $dp->perorangan->nama_perusahaan }}</td>
+              </tr>
+              <tr>
+                <th>Bidang Usaha</th>
+                <td>{{ $dp->perorangan->biidang_usaha }}</td>
+              </tr>
+              <tr>
+                <th>Jabatan</th>
+                <td>{{ $dp->perorangan->jabatan }}</td>
+              </tr>
+              <tr>
+                <th>Alamat Perusahaan / Instansi</th>
+                <td>
+                  <i class="fad fa-fw fa-location-dot text-danger"></i>
+                  {{ $dp->perorangan->alamat_perusahaan }}
+                </td>
+              </tr>
+              <tr>
+                <th>Pendapatan Rata-rata / Bulan</th>
+                <td>{{ $dp->perorangan->pendapatan }}</td>
+              </tr>
+              <tr>
+                <th>Sumber Penghasilan</th>
+                <td>{{ $dp->perorangan->sumber_penghasilan }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@endforeach

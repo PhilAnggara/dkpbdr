@@ -17,7 +17,9 @@ class DebiturController extends Controller
     {
         $fintech = Fintech::all();
         $items = Debitur::all();
-        return view('pages.debitur', compact('items', 'fintech'));
+        $debKorporasi = Debitur::where('type', 'korporasi')->get();
+        $debPerorangan = Debitur::where('type', 'perorangan')->get();
+        return view('pages.debitur', compact('items', 'fintech', 'debKorporasi', 'debPerorangan'));
     }
 
     public function create()
@@ -27,8 +29,36 @@ class DebiturController extends Controller
 
     public function store(DebiturRequest $request)
     {
-        // dd($request->all());
-        $item = Debitur::create($request->all());
+        $data = $request->all();
+        if ($request->type == 'korporasi') {
+            $fileFields = [
+                'npwp', 
+                'akta_pendirian', 
+                'akta_pengesahan', 
+                'akta_perubahan_terakhir', 
+                'akta_pengesahan2', 
+                'siup', 
+                'nib', 
+                'ktp_1', 
+                'npwp_1', 
+                'ktp_2', 
+                'npwp_2', 
+                'ktp_3', 
+                'npwp_3', 
+                'ktp_4', 
+                'npwp_4', 
+                'ktp_5', 
+                'npwp_5'
+            ];
+        } else {
+            $fileFields = ['ktp', 'npwp'];
+        }
+        foreach ($fileFields as $field) {
+            if ($request->hasFile($field)) {
+                $data[$field] = $request->file($field)->store($request->type, 'public');
+            }
+        }
+        $item = Debitur::create($data);
 
         if ($item->sistem_pembayaran == 'Balloon Payment') {
             for ($i=1; $i <= $item->jangka_waktu; $i++) {
@@ -52,10 +82,10 @@ class DebiturController extends Controller
         }
 
         if ($item->type == 'korporasi') {
-            $korporasi = new Korporasi($request->all());
+            $korporasi = new Korporasi($data);
             $item->korporasi()->save($korporasi);
         } else {
-            $perorangan = new Perorangan($request->all());
+            $perorangan = new Perorangan($data);
             $item->perorangan()->save($perorangan);
         }
         

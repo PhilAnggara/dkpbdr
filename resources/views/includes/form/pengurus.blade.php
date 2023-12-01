@@ -26,7 +26,7 @@
   <div class="col-md-6 col-12">
     <div class="form-group">
       <label for="{{ $id_ktp }}">KTP</label>
-      <input type="file" class="basic-filepond @error('ktp_1') is-invalid @enderror" id="{{ $id_ktp }}" name="{{ $id_ktp }}" value="{{ old('ktp_1') }}" requiredssssss>
+      <input type="file" class="basic-filepond @error('ktp_1') is-invalid @enderror" id="{{ $id_ktp }}" name="{{ $id_ktp }}" value="{{ old('ktp_1') }}" required>
       @error('ktp_1')
         <div class="invalid-feedback">
           <i class="bx bx-radio-circle"></i>
@@ -38,7 +38,7 @@
   <div class="col-md-6 col-12">
     <div class="form-group">
       <label for="{{ $id_npwp }}">NPWP</label>
-      <input type="file" class="basic-filepond @error($id_npwp) is-invalid @enderror" id="{{ $id_npwp }}" name="{{ $id_npwp }}" value="{{ old($id_npwp) }}" requiredssssss>
+      <input type="file" class="basic-filepond @error($id_npwp) is-invalid @enderror" id="{{ $id_npwp }}" name="{{ $id_npwp }}" value="{{ old($id_npwp) }}" required>
       @error($id_npwp)
         <div class="invalid-feedback">
           <i class="bx bx-radio-circle"></i>
