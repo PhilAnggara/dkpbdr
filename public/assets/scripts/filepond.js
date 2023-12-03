@@ -59,6 +59,9 @@ const fileInputs = [
   "#npwp_4_e",
   "#ktp_5_e",
   "#npwp_5_e",
+
+  "#b_ktp_e",
+  "#b_npwp_e",
 ];
 
 // Filepond: Basic
