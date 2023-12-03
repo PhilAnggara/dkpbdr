@@ -1,3 +1,7 @@
+{{--  --}}
+{{-- Tambah --}}
+{{--  --}}
+
 <div class="modal fade text-left" id="perorangan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
   aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -391,6 +395,9 @@
 
 @foreach ($debPerorangan as $dp)
 
+{{--  --}}
+{{-- Detail --}}
+{{--  --}}
 
 <div class="modal fade text-left" id="detail-{{ $dp->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
   aria-hidden="true">
@@ -580,5 +587,9 @@
   </div>
 </div>
 
+
+{{--  --}}
+{{-- Edit --}}
+{{--  --}}
 
 @endforeach

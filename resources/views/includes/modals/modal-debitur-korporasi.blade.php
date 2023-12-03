@@ -1,3 +1,7 @@
+{{--  --}}
+{{-- Tambah --}}
+{{--  --}}
+
 <div class="modal fade text-left" id="korporasi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
   aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -335,6 +339,9 @@
 
 @foreach ($debKorporasi as $dk)
 
+{{--  --}}
+{{-- Detail --}}
+{{--  --}}
 
 <div class="modal fade text-left" id="detail-{{ $dk->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
   aria-hidden="true">
@@ -506,6 +513,352 @@
         @include('includes.component.pengurus', ['nama' => $dk->korporasi->nama_5, 'jabatan' => $dk->korporasi->jabatan_5, 'ktp' => $dk->korporasi->ktp_5, 'npwp' => $dk->korporasi->npwp_5])
 
       </div>
+    </div>
+  </div>
+</div>
+
+
+{{--  --}}
+{{-- Edit --}}
+{{--  --}}
+
+<div class="modal fade text-left" id="edit-{{ $dk->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel1">
+          Edit Debitur
+          <span class="badge bg-light-primary">
+            <i class="fad fa-fw fa-sm fa-buildings"></i>
+            Korporasi
+          </span>
+        </h5>
+        <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      
+      <form action="{{ route('data-peminjam.update', $dk->id) }}" method="POST" enctype="multipart/form-data">
+        @method('PUT')
+        @csrf
+        <input type="hidden" name="type" value="korporasi">
+        <div class="modal-body">
+
+          <div class="divider my-3">
+            <div class="divider-text fw-bold">Data Nasabah</div>
+          </div>
+
+          <fieldset class="form-group">
+            <label for="fintech">Fintech</label>
+            <select class="form-select" id="fintech" name="id_fintech" required>
+              <option value="" selected disabled>-- Pilih Fintech --</option>
+              @foreach ($fintech as $f)
+                <option value="{{ $f->id }}" {{ $dk->id_fintech == $f->id ? 'selected' : '' }}>{{ $f->fintech }}</option>
+              @endforeach
+            </select>
+          </fieldset>
+
+          <div class="form-group">
+            <label for="nama">Nama Perusahaan</label>
+            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') ?? $dk->nama }}" placeholder="Nama Perusahaan" required autocomplete="off">
+            @error('nama')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <div class="form-group">
+            <label for="grup">Group</label>
+            <input type="text" class="form-control @error('grup') is-invalid @enderror" id="grup" name="grup" value="{{ old('grup') ?? $dk->grup }}" placeholder="Group" autocomplete="off">
+            @error('grup')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <div class="form-group">
+            <label for="plafond_all">Plafond All</label>
+            <div class="input-group">
+              <span class="input-group-text">Rp</span>
+              <input type="number" class="form-control @error('plafond_all') is-invalid @enderror" id="plafond_all" name="plafond_all" value="{{ old('plafond_all') ?? $dk->plafond_all }}" required autocomplete="off">
+              @error('plafond_all')
+                <div class="invalid-feedback">
+                  <i class="bx bx-radio-circle"></i>
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="plafond_bdr">Plafond BDR</label>
+            <div class="input-group">
+              <span class="input-group-text">Rp</span>
+              <input type="number" class="form-control @error('plafond_bdr') is-invalid @enderror" id="plafond_bdr" name="plafond_bdr" value="{{ old('plafond_bdr') ?? $dk->plafond_bdr }}" required autocomplete="off">
+              @error('plafond_bdr')
+                <div class="invalid-feedback">
+                  <i class="bx bx-radio-circle"></i>
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="tanggal_cair">Tanggal Cair</label>
+            <input type="date" class="form-control @error('tanggal_cair') is-invalid @enderror" id="tanggal_cair" name="tanggal_cair" value="{{ old('tanggal_cair') ?? $dk->tanggal_cair }}" placeholder="Tanggal Cair" required autocomplete="off">
+            @error('tanggal_cair')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <div class="form-group">
+            <label for="jangka_waktu">Jangka Waktu <small class="text-secondary">(Bulan)</small></label>
+            <input type="number" class="form-control @error('jangka_waktu') is-invalid @enderror" id="jangka_waktu" name="jangka_waktu" value="{{ old('jangka_waktu') ?? $dk->jangka_waktu }}" placeholder="Jangka Waktu" required autocomplete="off">
+            @error('jangka_waktu')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <fieldset class="form-group">
+            <label for="sistem_pembayaran">Sistem Pembayaran</label>
+            <select class="form-select" id="sistem_pembayaran" name="sistem_pembayaran" required>
+              <option value="" selected disabled>-- Pilih Sistem Pembayaran --</option>
+              <option {{ $dk->sistem_pembayaran == 'Balloon Payment' ? 'selected' : '' }}>Balloon Payment</option>
+              <option {{ $dk->sistem_pembayaran == 'Bullet Payment' ? 'selected' : '' }}>Bullet Payment</option>
+            </select>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="status_bh">Status Badan Hukum</label>
+            <select class="form-select" id="status_bh" name="status_bh" required>
+              <option value="" selected disabled>-- Pilih Status Badan Hukum --</option>
+              <option {{ $dk->korporasi->status_bh == 'PT' ? 'selected' : '' }}>PT</option>
+              <option {{ $dk->korporasi->status_bh == 'PD' ? 'selected' : '' }}>PD</option>
+              <option {{ $dk->korporasi->status_bh == 'CV' ? 'selected' : '' }}>CV</option>
+              <option {{ $dk->korporasi->status_bh == 'Firma' ? 'selected' : '' }}>Firma</option>
+              <option {{ $dk->korporasi->status_bh == 'UD' ? 'selected' : '' }}>UD</option>
+              <option {{ $dk->korporasi->status_bh == 'Koperasi' ? 'selected' : '' }}>Koperasi</option>
+              <option {{ $dk->korporasi->status_bh == 'Lembaga' ? 'selected' : '' }}>Lembaga</option>
+              <option {{ $dk->korporasi->status_bh == 'Instansi' ? 'selected' : '' }}>Instansi</option>
+              <option {{ $dk->korporasi->status_bh == 'Perusahaan Umum' ? 'selected' : '' }}>Perusahaan Umum</option>
+              <option {{ $dk->korporasi->status_bh == 'Yayasan' ? 'selected' : '' }}>Yayasan</option>
+              <option {{ $dk->korporasi->status_bh == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
+            </select>
+          </fieldset>
+          
+          <div class="form-group">
+            <label for="no_npwp">Nomor NPWP</label>
+            <input type="text" class="form-control @error('no_npwp') is-invalid @enderror" id="no_npwp" name="no_npwp" value="{{ old('no_npwp') ?? $dk->korporasi->no_npwp }}" placeholder="Nomor NPWP" required autocomplete="off">
+            @error('no_npwp')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+          
+          <div class="form-group">
+            <label for="npwp">Update NPWP</label>
+            <input type="file" class="basic-filepond @error('npwp') is-invalid @enderror" id="npwp_e" name="npwp" value="{{ old('npwp') ?? $dk->korporasi->npwp }}" requiredsssssssss>
+            @error('npwp')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <fieldset class="form-group">
+            <label for="bidang_usaha">Bidang Usaha</label>
+            <select class="form-select" id="bidang_usaha" name="bidang_usaha" required>
+              <option value="" selected disabled>-- Pilih Bidang Usaha --</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Perdagangan' ? 'selected' : '' }}>Perdagangan</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Pertanian' ? 'selected' : '' }}>Pertanian</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Perkebunan' ? 'selected' : '' }}>Perkebunan</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Peternakan' ? 'selected' : '' }}>Peternakan</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Perikanan' ? 'selected' : '' }}>Perikanan</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Bidang Produksi' ? 'selected' : '' }}>Bidang Produksi</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Pertambangan' ? 'selected' : '' }}>Pertambangan</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Transportasi' ? 'selected' : '' }}>Transportasi</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Pendidikan' ? 'selected' : '' }}>Pendidikan</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Pariwisata' ? 'selected' : '' }}>Pariwisata</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Jasa Keuangan' ? 'selected' : '' }}>Jasa Keuangan</option>
+              <option {{ $dk->korporasi->bidang_usaha == 'Lain-lain' ? 'selected' : '' }}>Lain-lain</option>
+            </select>
+          </fieldset>
+
+          <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <livewire:address-dropdown :kel="$dk->kelurahan"/>
+            <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{ old('alamat') ?? $dk->alamat }}" placeholder="Detail Lainnya (Cth: Nama Jalan, Gedung, No. Rumah, Patokan)" required autocomplete="off">
+            @error('alamat')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <div class="form-group">
+            <label for="no_telp">Nomor Telepon</label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="fal fa-fw fa-sm fa-phone"></i>
+              </span>
+              <input type="number" class="form-control @error('no_telp') is-invalid @enderror" id="no_telp" name="no_telp" value="{{ old('no_telp') ?? $dk->no_telp }}" required autocomplete="off">
+              @error('no_telp')
+                <div class="invalid-feedback">
+                  <i class="bx bx-radio-circle"></i>
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="no_hp">Nomor Handphone</label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="fal fa-fw fa-sm fa-mobile"></i>
+              </span>
+              <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" value="{{ old('no_hp') ?? $dk->no_hp }}" required autocomplete="off">
+              @error('no_hp')
+                <div class="invalid-feedback">
+                  <i class="bx bx-radio-circle"></i>
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div class="input-group">
+              <span class="input-group-text">
+                <i class="fal fa-fw fa-sm fa-envelope"></i>
+              </span>
+              <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') ?? $dk->email }}" required autocomplete="off">
+              @error('email')
+                <div class="invalid-feedback">
+                  <i class="bx bx-radio-circle"></i>
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </div>
+
+          <div class="divider my-3">
+            <div class="divider-text fw-bold">Legalitas</div>
+          </div>
+          
+          <div class="form-group">
+            <label>Akta Pendirian dan Pengesahan DEPKUMHAM</label>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <input type="file" class="basic-filepond @error('akta_pendirian') is-invalid @enderror" id="akta_pendirian_e" name="akta_pendirian" value="{{ old('akta_pendirian') ?? $dk->korporasi->akta_pendirian }}" requiredsssssssss>
+                @error('akta_pendirian')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+              <div class="col-md-6 col-12">
+                <input type="file" class="basic-filepond @error('akta_pengesahan') is-invalid @enderror" id="akta_pengesahan_e" name="akta_pengesahan" value="{{ old('akta_pengesahan') ?? $dk->korporasi->akta_pengesahan }}" requiredsssssssss>
+                @error('akta_pengesahan')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Akta Perubahan Terakhir dan Pengesahan DEPKUMHAM</label>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <input type="file" class="basic-filepond @error('akta_perubahan_terakhir') is-invalid @enderror" id="akta_perubahan_terakhir_e" name="akta_perubahan_terakhir" value="{{ old('akta_perubahan_terakhir') ?? $dk->korporasi->akta_perubahan_terakhir }}" requiredsssssssss>
+                @error('akta_perubahan_terakhir')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+              <div class="col-md-6 col-12">
+                <input type="file" class="basic-filepond @error('akta_pengesahan2') is-invalid @enderror" id="akta_pengesahan2_e" name="akta_pengesahan2" value="{{ old('akta_pengesahan2') ?? $dk->korporasi->akta_pengesahan2 }}" requiredsssssssss>
+                @error('akta_pengesahan2')
+                  <div class="invalid-feedback">
+                    <i class="bx bx-radio-circle"></i>
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="siup">SIUP</label>
+            <input type="file" class="basic-filepond @error('siup') is-invalid @enderror" id="siup_e" name="siup" value="{{ old('siup') ?? $dk->korporasi->siup }}" requiredsssssssss>
+            @error('siup')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+          
+          <div class="form-group">
+            <label for="nib">NIB (Nomor Induk Berusaha)</label>
+            <input type="file" class="basic-filepond @error('nib') is-invalid @enderror" id="nib_e" name="nib" value="{{ old('nib') ?? $dk->korporasi->nib }}" requiredsssssssss>
+            @error('nib')
+              <div class="invalid-feedback">
+                <i class="bx bx-radio-circle"></i>
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <div class="divider my-3">
+            <div class="divider-text fw-bold">Data Pengurus</div>
+          </div>
+
+          @include('includes.form.pengurus-edit', ['id_nama' => 'nama_1', 'id_jabatan' => 'jabatan_1', 'id_ktp' => 'ktp_1', 'id_npwp' => 'npwp_1', 'nama' => $dk->korporasi->nama_1, 'jabatan' => $dk->korporasi->jabatan_1])
+          <hr>
+          @include('includes.form.pengurus-edit', ['id_nama' => 'nama_2', 'id_jabatan' => 'jabatan_2', 'id_ktp' => 'ktp_2', 'id_npwp' => 'npwp_2', 'nama' => $dk->korporasi->nama_2, 'jabatan' => $dk->korporasi->jabatan_2])
+          <hr>
+          @include('includes.form.pengurus-edit', ['id_nama' => 'nama_3', 'id_jabatan' => 'jabatan_3', 'id_ktp' => 'ktp_3', 'id_npwp' => 'npwp_3', 'nama' => $dk->korporasi->nama_3, 'jabatan' => $dk->korporasi->jabatan_3])
+          <hr>
+          @include('includes.form.pengurus-edit', ['id_nama' => 'nama_4', 'id_jabatan' => 'jabatan_4', 'id_ktp' => 'ktp_4', 'id_npwp' => 'npwp_4', 'nama' => $dk->korporasi->nama_4, 'jabatan' => $dk->korporasi->jabatan_4])
+          <hr>
+          @include('includes.form.pengurus-edit', ['id_nama' => 'nama_5', 'id_jabatan' => 'jabatan_5', 'id_ktp' => 'ktp_5', 'id_npwp' => 'npwp_5', 'nama' => $dk->korporasi->nama_5, 'jabatan' => $dk->korporasi->jabatan_5])
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-bs-dismiss="modal">
+            Batal
+          </button>
+          <button type="submit" class="btn btn-primary ms-1">
+            Simpan
+          </button>
+        </div>
+      </form>
+      
     </div>
   </div>
 </div>

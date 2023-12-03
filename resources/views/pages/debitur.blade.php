@@ -113,7 +113,7 @@
                     <button type="button" class="btn icon" data-bs-toggle="modal" data-bs-target="#detail-{{ $item->id }}">
                       <i class="text-primary fal fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"></i>
                     </button>
-                    <button type="button" class="btn icon" data-bs-toggle="modal" data-bs-target="#edit{{ $item->type == 'korporasi' ? 'Korporasi' : 'Perorangan' }}-{{ $item->id }}">
+                    <button type="button" class="btn icon" data-bs-toggle="modal" data-bs-target="#edit-{{ $item->id }}">
                       <i class="text-primary fal fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i>
                     </button>
                     <button type="button" class="btn icon" onclick="hapusData({{ $item->id }}, 'Hapus Debitur', 'Yakin ingin menghapus {{ $item->nama }}?')">

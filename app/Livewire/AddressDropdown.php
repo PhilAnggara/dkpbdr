@@ -15,6 +15,7 @@ class AddressDropdown extends Component
     public $selectedKabupaten = '';
     public $selectedKecamatan = '';
     public $selectedKelurahan = '';
+    public $kel;
 
     public function mount()
     {
@@ -22,6 +23,16 @@ class AddressDropdown extends Component
         $this->kabupaten = collect();
         $this->kecamatan = collect();
         $this->kelurahan = collect();
+
+        if ($this->kel) {
+            $this->selectedKelurahan = $this->kel->id;
+            $this->selectedKecamatan = $this->kel->kec->id;
+            $this->selectedKabupaten = $this->kel->kec->kab->id;
+            $this->selectedProvinsi = $this->kel->kec->kab->prov->id;
+            $this->kabupaten = Kabupaten::where('id_provinsi', $this->selectedProvinsi)->get();
+            $this->kecamatan = Kecamatan::where('id_kabupaten', $this->selectedKabupaten)->get();
+            $this->kelurahan = Kelurahan::where('id_kecamatan', $this->selectedKecamatan)->get();
+        }
     }
 
     public function render()

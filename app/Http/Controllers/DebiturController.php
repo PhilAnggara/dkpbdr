@@ -105,7 +105,45 @@ class DebiturController extends Controller
 
     public function update(DebiturRequest $request, string $id)
     {
-        //
+        $data = $request->all();
+        if ($request->type == 'korporasi') {
+            $fileFields = [
+                'npwp', 
+                'akta_pendirian', 
+                'akta_pengesahan', 
+                'akta_perubahan_terakhir', 
+                'akta_pengesahan2', 
+                'siup', 
+                'nib', 
+                'ktp_1', 
+                'npwp_1', 
+                'ktp_2', 
+                'npwp_2', 
+                'ktp_3', 
+                'npwp_3', 
+                'ktp_4', 
+                'npwp_4', 
+                'ktp_5', 
+                'npwp_5'
+            ];
+        } else {
+            $fileFields = ['ktp', 'npwp'];
+        }
+        foreach ($fileFields as $field) {
+            if ($request->hasFile($field)) {
+                $data[$field] = $request->file($field)->store($request->type, 'public');
+            }
+        }
+        $item = Debitur::find($id);
+        $item->update($data);
+
+        if ($item->type == 'korporasi') {
+            $item->korporasi->update($data);
+        } else {
+            $item->perorangan->update($data);
+        }
+
+        return redirect()->back()->with('success', $request->nama.' berhasil diubah!');
     }
 
     public function destroy(string $id)

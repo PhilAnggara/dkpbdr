@@ -40,7 +40,25 @@ const fileInputs = [
   "#npwp_5",
 
   "#b_ktp",
-  "#b_npwp"
+  "#b_npwp",
+
+  "#npwp_e",
+  "#akta_pendirian_e",
+  "#akta_pengesahan_e",
+  "#akta_perubahan_terakhir_e",
+  "#akta_pengesahan2_e",
+  "#siup_e",
+  "#nib_e",
+  "#ktp_1_e",
+  "#npwp_1_e",
+  "#ktp_2_e",
+  "#npwp_2_e",
+  "#ktp_3_e",
+  "#npwp_3_e",
+  "#ktp_4_e",
+  "#npwp_4_e",
+  "#ktp_5_e",
+  "#npwp_5_e",
 ];
 
 // Filepond: Basic
