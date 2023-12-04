@@ -12,7 +12,7 @@
   </div>
   <section class="section">
 
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-header">
         <h4 class="card-title">Capaian Sindikasi (Pertanggal / Bulan)</h4>
       </div>
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-header">
         <h4 class="card-title">Jatuh Tagih dan Jatuh Tempo</h4>
       </div>

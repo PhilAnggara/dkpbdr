@@ -13,7 +13,7 @@
   </div>
   <section class="section">
 
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-header">
         <h4>Capaian Sindikasi</h4>
       </div>
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-header">
         <h4 class="card-title">Jatuh Tagih dan Jatuh Tempo <small class="text-muted">({{ $carbon::now()->isoFormat('MMMM YYYY') }})</small></h4>
       </div>

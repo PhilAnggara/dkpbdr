@@ -12,7 +12,7 @@
   </div>
   <section class="section">
 
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-body">
       </div>
     </div>

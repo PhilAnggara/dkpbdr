@@ -38,14 +38,14 @@
   <section class="section">
 
     @if (session('success'))
-      <div class="alert alert-light-success color-success alert-dismissible fade show" role="alert">
+      <div class="alert alert-light-success color-success alert-dismissible fade show shadow-sm" role="alert">
         <i class="bi bi-check-circle"></i>
         {{ session('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     @endif
 
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-body">
         <table class="table table-striped table-hover text-center" id="table1">
           <thead>

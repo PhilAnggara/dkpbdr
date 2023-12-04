@@ -19,7 +19,7 @@
   </div>
   <section class="section">
 
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-body">
         <table class="table table-striped table-hover text-center" id="table1">
           <thead>
