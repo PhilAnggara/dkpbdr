@@ -13,9 +13,29 @@ class MainController extends Controller
     public function index()
     {
         $pembayaran = Pembayaran::whereMonth('tanggal', Carbon::now()->month)->get()->sortByDesc('tanggal');
+        $chartData = $this->getDataForChart();
         return view('pages.beranda', [
-            'pembayaran' => $pembayaran
+            'pembayaran' => $pembayaran,
+            'chartData' => $chartData
         ]);
+    }
+
+    private function getDataForChart()
+    {
+        $data = [];
+
+        // Ambil data untuk 10 bulan terakhir
+        for ($i=10-1; $i >= 0; $i--) { 
+            $bulan = now()->subMonths($i)->isoFormat('MMM');
+            $totalPlafond = Debitur::whereMonth('tanggal_cair', now()->subMonths($i)->month)->sum('plafond_bdr');
+            $jumlahDebitur = Debitur::whereMonth('tanggal_cair', now()->subMonths($i)->month)->count();
+            $data['bulan'][] = $bulan;
+            $data['plafond'][] = $totalPlafond;
+            $data['debitur'][] = $jumlahDebitur;
+        }
+
+        // dd($data);
+        return $data;
     }
 
     public function inputData()

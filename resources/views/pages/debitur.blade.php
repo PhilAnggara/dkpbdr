@@ -11,10 +11,6 @@
         <h3>Data Peminjam</h3>
       </div>
       <div class="col-12 col-md-6">
-        {{-- <button class="btn icon icon-left btn-primary float-start float-lg-end" data-bs-toggle="modal" data-bs-target="#tambah">
-          <i class="fa fa-fw fa-file-pen"></i>
-          Input Data
-        </button> --}}
         <div class="dropdown float-start float-lg-end">
           <button class="btn icon icon-left btn-primary dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -59,37 +55,6 @@
             </tr>
           </thead>
           <tbody>
-            {{-- <tr>
-              <td>Elisabet</td>
-              <td>Aktivaku</td>
-              <td>JDT</td>
-              <td>
-                <i class="fal fa-calendar-day text-danger"></i>
-                26 September 2023
-              </td>
-            </tr>
-            <tr>
-              <td>PT Jaya Dirga Tama</td>
-              <td>Aktivaku</td>
-              <td>JDT</td>
-              <td>
-                <i class="fal fa-calendar-day text-danger"></i>
-                26 September 2023
-              </td>
-              <td>
-                <div class="btn-group btn-group-sm" role="group">
-                  <button type="button" class="btn icon">
-                    <i class="text-primary fal fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"></i>
-                  </button>
-                  <button type="button" class="btn icon">
-                    <i class="text-primary fal fa-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i>
-                  </button>
-                  <button type="button" class="btn icon">
-                    <i class="text-secondary fal fa-trash-alt" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus"></i>
-                  </button>
-                </div>
-              </td>
-            </tr> --}}
             @foreach ($items as $item)
               <tr>
                 <td>{{ $item->nama }}</td>
@@ -174,4 +139,18 @@
 <script src="{{ url('assets/extensions/filepond/filepond.js') }}"></script>
 <script src="{{ url('assets/extensions/toastify-js/src/toastify.js') }}"></script>
 <script src="{{ url('assets/scripts/filepond.js') }}"></script>
+
+
+  @if (session('success'))
+    <script>
+      Swal.fire({
+        title: "{{ session('success') }}",
+        icon: "success",
+        confirmButtonColor: '#FF5154',
+        confirmButtonText: 'OKE',
+        width: 32rem,
+        timer: 6000,
+      });
+    </script>
+  @endif
 @endpush

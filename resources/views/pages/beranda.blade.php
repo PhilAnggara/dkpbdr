@@ -18,7 +18,7 @@
         <h4>Capaian Sindikasi</h4>
       </div>
       <div class="card-body">
-        <div id="bar"></div>
+        <div id="chart"></div>
       </div>
     </div>
 
@@ -92,18 +92,8 @@
 @endpush
 @push('addon-script')
 <script>
-  var typed = new Typed('#typed', {
-    strings: [
-      'Selamat Datang, ' + `{!! Str::before(auth()->user()->name, ' ') !!}` + '..!',
-    ],
-    startDelay: 500,
-    typeSpeed: 20,
-    showCursor: false,
-    // backSpeed: 15,
-    // backDelay: 3000,
-    // loop: true,
-    // loopCount: Infinity,
-  });
+  var authName = @json(Str::before(auth()->user()->name, ' '));
+  var chartData = @json($chartData);
 </script>
 <script src="{{ url('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ url('assets/scripts/beranda.js') }}"></script>
