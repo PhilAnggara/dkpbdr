@@ -57,12 +57,12 @@
             </a>
           </li>
 
-          <li class="sidebar-item {{ Request::is('capaian-sindkasi') ? 'active' : '' }}">
+          {{-- <li class="sidebar-item {{ Request::is('capaian-sindkasi') ? 'active' : '' }}">
             <a href="#" class='sidebar-link'>
               <i class="fa fa-fw fa-chart-line-up"></i>
               <span>Capaian Sindikasi</span>
             </a>
-          </li>
+          </li> --}}
 
           <li class="sidebar-item {{ Request::is('jatuh-tagih-jatuh-tempo') ? 'active' : '' }}">
             <a href="{{ route('jatuh-tagih-jatuh-tempo') }}" class='sidebar-link'>
@@ -102,6 +102,13 @@
           @endif
 
         @endif
+
+        <li class="sidebar-item  {{ Request::is('informasi-pribadi') ? 'active' : '' }}">
+          <a href="{{ route('informasi-pribadi.index') }}" class='sidebar-link'>
+            <i class="fa fa-fw fa-address-card"></i>
+            <span>Informasi Pribadi</span>
+          </a>
+        </li>
 
       </ul>
     </div>

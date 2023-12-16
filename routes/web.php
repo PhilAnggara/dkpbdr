@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\DebiturController;
+use App\Http\Controllers\PersonalInformationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 
@@ -32,6 +33,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('hapus-dokumen/{id}', [MainController::class, 'hapusDokumen'])->name('hapus-dokumen');
         Route::resource('kelola-pengguna', UserController::class)->middleware('checkRole:Super Admin');
     });
+
+    Route::resource('informasi-pribadi', PersonalInformationController::class);
+    Route::post('change-password', [PersonalInformationController::class, 'changePassword'])->name('change.password');
     
 });
 

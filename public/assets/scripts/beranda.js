@@ -18,6 +18,8 @@ let chartDataDummy = {
     12000000000
   ]
 };
+
+// Hapus line di bawah ini untuk menggunakan data asli
 chartData = chartDataDummy;
 
 

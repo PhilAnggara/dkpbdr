@@ -213,5 +213,8 @@ return [
         'updated_at'               => 'diperbarui pada',
         'username'                 => 'nama pengguna',
         'year'                     => 'tahun',
+        // 
+        'new_password'    => 'kata sandi baru',
+        'new_password_confirmation'    => 'konfirmasi kata sandi baru',
     ],
 ];
