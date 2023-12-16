@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\DebiturController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,25 +19,20 @@ use App\Http\Controllers\ProfileController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('index');
-    Route::get('input-data', [MainController::class, 'inputData'])->name('input-data');
-    Route::resource('data-peminjam', DebiturController::class);
-    Route::get('capaian-sindkasi', [MainController::class, 'capaian'])->name('capaian-sindkasi');
-    Route::get('jatuh-tagih-jatuh-tempo', [MainController::class, 'jatuh'])->name('jatuh-tagih-jatuh-tempo');
-    Route::get('lkk', [MainController::class, 'lkk'])->name('lkk');
-    Route::get('lkd', [MainController::class, 'lkd'])->name('lkd');
-    Route::get('memo-dinas', [MainController::class, 'memoDinas'])->name('memo-dinas');
-    Route::post('upload-dokumen', [MainController::class, 'uploadDokumen'])->name('upload-dokumen');
-    Route::delete('hapus-dokumen/{id}', [MainController::class, 'hapusDokumen'])->name('hapus-dokumen');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::middleware('checkRole:Super Admin,Admin')->group(function () {
+        Route::get('input-data', [MainController::class, 'inputData'])->name('input-data');
+        Route::resource('data-peminjam', DebiturController::class);
+        Route::get('capaian-sindkasi', [MainController::class, 'capaian'])->name('capaian-sindkasi');
+        Route::get('jatuh-tagih-jatuh-tempo', [MainController::class, 'jatuh'])->name('jatuh-tagih-jatuh-tempo');
+        Route::get('lkk', [MainController::class, 'lkk'])->name('lkk');
+        Route::get('lkd', [MainController::class, 'lkd'])->name('lkd');
+        Route::get('memo-dinas', [MainController::class, 'memoDinas'])->name('memo-dinas');
+        Route::post('upload-dokumen', [MainController::class, 'uploadDokumen'])->name('upload-dokumen');
+        Route::delete('hapus-dokumen/{id}', [MainController::class, 'hapusDokumen'])->name('hapus-dokumen');
+        Route::resource('kelola-pengguna', UserController::class)->middleware('checkRole:Super Admin');
+    });
+    
 });
 
 require __DIR__.'/auth.php';

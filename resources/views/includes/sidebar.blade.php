@@ -48,47 +48,60 @@
           </a>
         </li>
 
-        <li class="sidebar-item {{ Request::is('data-peminjam') ? 'active' : '' }}">
-          <a href="{{ route('data-peminjam.index') }}" class='sidebar-link'>
-            <i class="fa fa-fw fa-money-check-dollar-pen"></i>
-            <span>Data Peminjam</span>
-          </a>
-        </li>
+        @if (auth()->user()->role != 'User')
+        
+          <li class="sidebar-item {{ Request::is('data-peminjam') ? 'active' : '' }}">
+            <a href="{{ route('data-peminjam.index') }}" class='sidebar-link'>
+              <i class="fa fa-fw fa-money-check-dollar-pen"></i>
+              <span>Data Peminjam</span>
+            </a>
+          </li>
 
-        <li class="sidebar-item {{ Request::is('capaian-sindkasi') ? 'active' : '' }}">
-          <a href="#" class='sidebar-link'>
-            <i class="fa fa-fw fa-chart-line-up"></i>
-            <span>Capaian Sindikasi</span>
-          </a>
-        </li>
+          <li class="sidebar-item {{ Request::is('capaian-sindkasi') ? 'active' : '' }}">
+            <a href="#" class='sidebar-link'>
+              <i class="fa fa-fw fa-chart-line-up"></i>
+              <span>Capaian Sindikasi</span>
+            </a>
+          </li>
 
-        <li class="sidebar-item {{ Request::is('jatuh-tagih-jatuh-tempo') ? 'active' : '' }}">
-          <a href="{{ route('jatuh-tagih-jatuh-tempo') }}" class='sidebar-link'>
-            <i class="fa fa-fw fa-calendar-exclamation"></i>
-            <span>Jatuh Tagih / Tempo</span>
-          </a>
-        </li>
+          <li class="sidebar-item {{ Request::is('jatuh-tagih-jatuh-tempo') ? 'active' : '' }}">
+            <a href="{{ route('jatuh-tagih-jatuh-tempo') }}" class='sidebar-link'>
+              <i class="fa fa-fw fa-calendar-exclamation"></i>
+              <span>Jatuh Tagih / Tempo</span>
+            </a>
+          </li>
 
-        <li class="sidebar-item {{ Request::is('lkk') ? 'active' : '' }}">
-          <a href="{{ route('lkk') }}" class='sidebar-link'>
-            <i class="fa fa-fw fa-file-check"></i>
-            <span>LKK</span>
-          </a>
-        </li>
+          <li class="sidebar-item {{ Request::is('lkk') ? 'active' : '' }}">
+            <a href="{{ route('lkk') }}" class='sidebar-link'>
+              <i class="fa fa-fw fa-file-check"></i>
+              <span>LKK</span>
+            </a>
+          </li>
 
-        <li class="sidebar-item {{ Request::is('lkd') ? 'active' : '' }}">
-          <a href="{{ route('lkd') }}" class='sidebar-link'>
-            <i class="fa fa-fw fa-file-spreadsheet"></i>
-            <span>LKD</span>
-          </a>
-        </li>
+          <li class="sidebar-item {{ Request::is('lkd') ? 'active' : '' }}">
+            <a href="{{ route('lkd') }}" class='sidebar-link'>
+              <i class="fa fa-fw fa-file-spreadsheet"></i>
+              <span>LKD</span>
+            </a>
+          </li>
 
-        <li class="sidebar-item {{ Request::is('memo-dinas') ? 'active' : '' }}">
-          <a href="{{ route('memo-dinas') }}" class='sidebar-link'>
-            <i class="fa fa-fw fa-memo"></i>
-            <span>Memo Dinas</span>
-          </a>
-        </li>
+          <li class="sidebar-item {{ Request::is('memo-dinas') ? 'active' : '' }}">
+            <a href="{{ route('memo-dinas') }}" class='sidebar-link'>
+              <i class="fa fa-fw fa-memo"></i>
+              <span>Memo Dinas</span>
+            </a>
+          </li>
+
+          @if (auth()->user()->role === 'Super Admin')
+            <li class="sidebar-item {{ Request::is('kelola-pengguna') ? 'active' : '' }}">
+              <a href="{{ route('kelola-pengguna.index') }}" class='sidebar-link'>
+                <i class="fa fa-fw fa-users-gear"></i>
+                <span>Kelola Pengguna</span>
+              </a>
+            </li>
+          @endif
+
+        @endif
 
       </ul>
     </div>

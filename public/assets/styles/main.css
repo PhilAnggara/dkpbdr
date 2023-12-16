@@ -26,12 +26,34 @@ html[data-bs-theme="dark"] a:hover {
 }
 
 .h-card {
-	box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.15);
+	box-shadow: 0 .5rem .25rem rgba(0, 0, 0, 0.15);
 	// transition : box-shadow .2s !important;
 	&:hover {
-		background-color: #d6e6fd;
-		box-shadow: 0 .125rem .70rem rgba(0, 0, 0, 0.25);
+		background-color: #fcdbdc;
+		box-shadow: 0 .5rem .70rem rgba(0, 0, 0, 0.25) !important;
 	}
+}
+
+.card-plus {
+    background-color: #fcc1c2;
+}
+
+.h-card-img img {
+    height: 200px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    transform-origin: 50% 100%;
+    transition: transform 0.15s;
+}
+.h-card-img:hover {
+    box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25) !important;
+}
+.h-card-img:hover img {
+    transform: scale(1.1);
+}
+
+.h-fix {
+    height: 350px !important;
 }
 
 /* auth */
