@@ -25,7 +25,7 @@
               </div>
             </div>
           </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
+          <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownMenuButton"
             style="min-width: 11rem;">
             <li>
               <a class="dropdown-item" href="#" onclick="keluar()">
